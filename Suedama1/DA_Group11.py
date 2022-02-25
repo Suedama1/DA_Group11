@@ -1,7 +1,7 @@
 # Importing appropriate libraries
 import requests
 # Perform a "get" request on the given website
-url = 'https://www.lazada.sg/shop-groceries-beverages-soft-drinks/?spm=a2o42.searchlistcategory.cate_6_2.1.54326ecfvjn85J'
+url = 'https://www.thedamngoodshop.com/collections/found-boxes'
 r = requests.get(url)
 print(r.text)
 # Display an "OK" return status
@@ -21,7 +21,7 @@ print(rh.text)
 import scrapy
 from scrapy.http.request import Request
 # Use Scrapy web-crawler with appropriate parser “response.css”
-class LazadaSpider(scrapy.Spider):
+class TDGSSpider(scrapy.Spider):
     name = "?"
     start_urls = ['?']
     def start_requests(self):
