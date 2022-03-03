@@ -1,5 +1,7 @@
 # Importing appropriate libraries
 import requests
+import unittest
+
 # Perform a "get" request on the given website
 url = 'https://www.thedamngoodshop.com/collections/found-boxes'
 r = requests.get(url)
@@ -10,7 +12,7 @@ print('\t *', r.status_code)
 # Display the Website header
 h = requests.head(url)
 print('Header:')
-print("*********")
+print("***")
 # Modify the Header user-agent to display “Mobile”
 headers = {
     'User-Agent': 'Mobile'
@@ -20,10 +22,11 @@ rh = requests.get(url2, headers=headers)
 print(rh.text)
 import scrapy
 from scrapy.http.request import Request
+
 # Use Scrapy web-crawler with appropriate parser “response.css”
 class TDGSSpider(scrapy.Spider):
-    name = "?"
-    start_urls = ['?']
+    name = "BoxesSpider"
+    start_urls = ['https://www.thedamngoodshop.com/collections/found-boxes']
     def start_requests(self):
         headers = {'User-Agent':'Mozilla/5.0 (Android 7.0; Mobile; rv:54.0) Gecko/54.0 Firefox/54.0'}
         for url in self.start_urls:
@@ -44,8 +47,7 @@ class TDGSSpider(scrapy.Spider):
                 response.urljoin(next_page),
                 callback=self.parse
             )
-# Importing appropriate libraries
-import unittest
+
 # Task 8
 class TestingHeader(unittest.TestCase):
     headers = {'User-Agent': 'Mobile'}
